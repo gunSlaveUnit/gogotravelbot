@@ -1,2 +1,4 @@
+from dotenv import dotenv_values
+
 if __name__ == "__main__":
-	print("hello")
+	config = dotenv_values(".env")
