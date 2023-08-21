@@ -6,3 +6,5 @@ if __name__ == "__main__":
 
 	bot = Bot(config['API_TOKEN'])
 	dispatcher = Dispatcher(bot)
+
+	executor.start_polling(dispatcher, skip_updates=True)
