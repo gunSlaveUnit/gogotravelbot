@@ -1,6 +1,15 @@
 from dotenv import dotenv_values
 from aiogram import Bot, Dispatcher, executor, types
 
+async def choose_language(message: types.Message):
+        keyboard = InlineKeyboardMarkup()
+
+        keyboard.add(InlineKeyboardButton(text='Русский', callback_data='ru'),
+                     InlineKeyboardButton(text='English', callback_data='en'),
+                     InlineKeyboardButton(text='Español', callback_data='es'))
+
+        await message.answer(text="Please, select a language:", reply_markup=keyboard)
+
 
 async def main_menu_screen(message: types.Message):
 	# TODO: normal database query for user balance
