@@ -2,13 +2,21 @@ from dotenv import dotenv_values
 from aiogram import Bot, Dispatcher, executor, types
 
 async def choose_language(message: types.Message):
-        keyboard = InlineKeyboardMarkup()
+		buttons = [
+			[
+				types.KeyboardButton(text='Русский', callback_data='ru'),
+                types.KeyboardButton(text='English', callback_data='en'),
+                types.KeyboardButton(text='Español', callback_data='es'),
+			],
+		]
 
-        keyboard.add(InlineKeyboardButton(text='Русский', callback_data='ru'),
-                     InlineKeyboardButton(text='English', callback_data='en'),
-                     InlineKeyboardButton(text='Español', callback_data='es'))
-
-        await message.answer(text="Please, select a language:", reply_markup=keyboard)
+		keyboard_markup = types.ReplyKeyboardMarkup(
+			keyboard=buttons,
+			resize_keyboard=True,
+			input_field_placeholder="You can change it at any time in the settings"
+		)
+		
+		await message.answer(text="Please, select a language", reply_markup=keyboard_markup)
 
 
 async def main_menu_screen(message: types.Message):
@@ -51,6 +59,6 @@ if __name__ == "__main__":
 	bot = Bot(config['API_TOKEN'])
 	dispatcher = Dispatcher(bot)
 
-	dispatcher.register_message_handler(main_menu_screen, commands=["start"])
+	dispatcher.register_message_handler(choose_language, commands=["start"])
 
 	executor.start_polling(dispatcher, skip_updates=True)
