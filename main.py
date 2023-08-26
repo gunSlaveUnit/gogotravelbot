@@ -14,6 +14,11 @@ async def choose_language(message: types.Message):
 		)
 
 
+async def process_language_choosing_callback(callback_query: types.CallbackQuery):
+        chosen_language = callback_query.data
+        await callback_query.message.answer(text=f"Your language is: {chosen_language}")
+
+
 async def main_menu_screen(message: types.Message):
 	# TODO: normal database query for user balance
 	dummy_balance = 236
@@ -55,5 +60,6 @@ if __name__ == "__main__":
 	dispatcher = Dispatcher(bot)
 
 	dispatcher.register_message_handler(choose_language, commands=["start"])
+	dispatcher.register_callback_query_handler(choose_language, process_language_choosing_callback)
 
 	executor.start_polling(dispatcher, skip_updates=True)
