@@ -1,7 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+
+	"github.com/joho/godotenv"
+)
 
 func main() {
-	fmt.Println("Hello, World!")
+	err := godotenv.Load()
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	token := os.Getenv("TOKEN")
+	fmt.Println(token)
 }
