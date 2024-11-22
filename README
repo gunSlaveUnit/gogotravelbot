@@ -1,1 +1,16 @@
 gogotravelbot
+
+clone:
+git clone https://github.com/gunSlaveUnit/gogotravelbot.git
+
+change working directory:
+cd gogotravelbot
+
+create a .env file with content:
+TOKEN=<your_telegram_bot_token>
+
+build:
+go build -o gogotravelbot cmd/main.go
+
+run:
+./gogotravelbot
