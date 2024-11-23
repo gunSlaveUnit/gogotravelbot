@@ -31,6 +31,9 @@ func main() {
 	updateConfig.Timeout = 30
 
 	for update := range bot.GetUpdatesChan(updateConfig) {
-		fmt.Println(update.Message.Text)
+		message := tgbotapi.NewMessage(update.Message.Chat.ID, update.Message.Text)
+		if _, err := bot.Send(message); err != nil {
+			fmt.Println(err)
+		}
 	}
 }
