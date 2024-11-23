@@ -10,11 +10,15 @@ create a .env file with content:
 DEBUG=true | false
 TOKEN=<your_telegram_bot_token>
 
+manual:
 download dependencies:
 go mod download
 
 build:
-go build -o gogotravelbot cmd/main.go
+go build -o gogotravelbot cmd/bot/main.go
 
 run:
 ./gogotravelbot
+
+docker:
+docker compose -f deployments/compose.yaml up -d
