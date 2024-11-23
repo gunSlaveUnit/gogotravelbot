@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 
 	"github.com/joho/godotenv"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
@@ -14,13 +15,17 @@ func main() {
 		fmt.Println(err)
 	}
 
+	debug, err := strconv.ParseBool(os.Getenv("DEBUG"))
+	if err != nil {
+		fmt.Println(err)
+	}
 	token := os.Getenv("TOKEN")
 
 	bot, err := tgbotapi.NewBotAPI(token)
 	if err != nil {
 		fmt.Println(err)
 	}
-	bot.Debug = true
+	bot.Debug = debug
 
 	updateConfig := tgbotapi.NewUpdate(0)
 	updateConfig.Timeout = 30

@@ -7,6 +7,7 @@ change working directory:
 cd gogotravelbot
 
 create a .env file with content:
+DEBUG=true | false
 TOKEN=<your_telegram_bot_token>
 
 build:
