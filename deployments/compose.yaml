@@ -1,0 +1,19 @@
+networks:
+  gogotravel:
+    external: true
+
+services:
+  bot:
+    build:
+      context: ..
+      dockerfile: ./build/Dockerfile
+    container_name: bot
+    env_file: ../.env
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200m"
+        max-file: "5"
+    networks:
+      - gogotravel
+    restart: unless-stopped
