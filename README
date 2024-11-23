@@ -1,24 +1,24 @@
 gogotravelbot
 
 clone:
-git clone https://github.com/gunSlaveUnit/gogotravelbot.git
+    git clone https://github.com/gunSlaveUnit/gogotravelbot.git
 
 change working directory:
-cd gogotravelbot
+    cd gogotravelbot
 
 create a .env file with content:
-DEBUG=true | false
-TOKEN=<your_telegram_bot_token>
+    DEBUG=true | false
+    TOKEN=<your_telegram_bot_token>
 
 manual:
-download dependencies:
-go mod download
+    download dependencies:
+        go mod download
 
-build:
-go build -o gogotravelbot cmd/bot/main.go
+    build:
+        go build -o gogotravelbot cmd/bot/main.go
 
-run:
-./gogotravelbot
+    run:
+        ./gogotravelbot
 
 docker:
-docker compose -f deployments/compose.yaml up -d
+    docker compose -f deployments/compose.yaml up -d
